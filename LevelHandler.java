@@ -9,8 +9,8 @@ public class LevelHandler {
     private UserPanel game;
     private BufferedImage[] levelMap;
 
-    private int scale = 4;
-    private int tileSize = 16;
+    private int scale = UserPanel.SCALE;
+    private int tileSize = UserPanel.TILE_SIZE;
     
     public LevelHandler(UserPanel game) {
         this.game = game;
@@ -29,18 +29,17 @@ public class LevelHandler {
                 System.out.println(count);
             }
         }
-
-
     }
 
     public void draw(Graphics g) {
         int count = 0;
         for(BufferedImage img : levelMap) {
-            g.drawImage(img, count * tileSize * scale, 0, tileSize * scale, tileSize * scale, null);
+            g.drawImage(img, count * tileSize * scale, (count % 8) * tileSize * scale, tileSize * scale, tileSize * scale, null);
             count++;
         }
-        
     }
+
+
     public void update() {
 
     }
