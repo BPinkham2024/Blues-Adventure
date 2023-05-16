@@ -9,8 +9,7 @@ import javax.imageio.ImageIO;
 public class LoadSave {
 
     public static final String SPRITE_MAP = "res/game_sprites.png";
-    public static final String LEVEL_MAP = "res/map_tiles.png";
-    
+    public static final String TERRAIN_MAP = "res/terrain_map.png";   
 
     public static BufferedImage GetMap(String fileName) {
 
