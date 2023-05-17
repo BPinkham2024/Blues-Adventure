@@ -24,9 +24,9 @@ public class LevelHandler {
         levelMap = new BufferedImage[24];
 
         int count = 0;
-        for(int i = 0; i < 8; i++) {
-            for(int j = 0; j < 3; j++) {
-                levelMap[count] = map.getSubimage(i * tileSize, j * tileSize, tileSize, tileSize);
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 8; j++) {
+                levelMap[count] = map.getSubimage(j * tileSize, i * tileSize, tileSize, tileSize);
                 count++;
                 // System.out.println(count);
             }
@@ -39,12 +39,13 @@ public class LevelHandler {
         //     g.drawImage(img, count * tileSize * scale, (count % 8) * tileSize * scale, tileSize * scale, tileSize * scale, null);
         //     count++;
         // }
-        for(int i = 0; i < 10; i++) {
-            for(int j = 0; j < 20; j++) {
-                int index = level1.getIndex(j, i);
-                g.drawImage(levelMap[index], i * 16, j * 16, 16, 16, null);
+        for(int i = 0; i < 20; i++) {
+            for(int j = 0; j < 10; j++) {
+                int index = level1.getIndex(i, j);
+                g.drawImage(levelMap[index], i * UserPanel.SCALED_TILE_SIZE, j * UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE, null);
             }
         }
+        // g.drawImage(levelMap[6], 0, 0, 64, 64, null);
 
     }
 

@@ -12,7 +12,9 @@ public class LoadSave {
 
     public static final String SPRITE_MAP = "res/game_sprites.png";
     public static final String TERRAIN_MAP = "res/terrain_map.png";
-    public static final String LEVEL_ONE_DATA = "res/level_one_data.png";   
+    public static final String LEVEL_ONE_DATA = "res/level_one_data.png";
+    public static final String FULL_BACK_DATA = "res/full_back.png";
+
 
     public static BufferedImage GetMap(String fileName) {
 
@@ -36,12 +38,17 @@ public class LoadSave {
         for(int i = 0; i < img.getHeight(); i++) {
             for(int j = 0; j < img.getWidth(); j++) {
                 Color color = new Color(img.getRGB(j, i));
-                int red = color.getRed();
+                int red = color.getRed() - 1;
                 if(red <= 24) {
                     levelData[i][j] = red;
+                } else if(red <= -1) {
+                    levelData[i][j] = 6;
                 } else {
-                    levelData[i][j] = 7;
+                    levelData[i][j] = 6;
                 }
+
+
+                // System.out.println(levelData[i][j]);
             }
         }
 
