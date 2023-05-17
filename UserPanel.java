@@ -25,8 +25,8 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
 
     public final static int TILE_SIZE = 16;
     public final static int SCALE = 4;
-    public final static int TILES_IN_WIDTH = 26;
-    public final static int TILES_IN_HEIGHT = 14;
+    public final static int TILES_IN_WIDTH = 20;
+    public final static int TILES_IN_HEIGHT = 10;
     public final static int SCALED_TILE_SIZE = TILE_SIZE * SCALE;
     public final static int GAME_WIDTH = SCALED_TILE_SIZE * TILES_IN_WIDTH;
     public final static int GAME_HEIGHT = SCALED_TILE_SIZE * TILES_IN_HEIGHT;
@@ -117,8 +117,8 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     }
 
     public void render(Graphics g) {
-        player.render(g);
         levelHandler.draw(g);
+        player.render(g);
     }
 
 
