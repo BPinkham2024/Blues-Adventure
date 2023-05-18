@@ -44,8 +44,11 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     }
 
     private void initClasses() {
-        player = new Player(100, 100);
         levelHandler = new LevelHandler(this);
+
+        player = new Player(200, 200, SCALED_TILE_SIZE, SCALED_TILE_SIZE);
+        player.setLevelData(levelHandler.getLevel().getLevelData());
+        
     }
 
 

@@ -9,5 +9,9 @@ public class Level {
     public int getIndex(int x,  int y) {
         return levelData[y][x];
     }
+
+    public int[][] getLevelData() {
+        return levelData;
+    }
     
 }

@@ -49,6 +49,10 @@ public class LevelHandler {
 
     }
 
+    public Level getLevel() {
+        return level1;
+    }
+
 
     public void update() {
 
