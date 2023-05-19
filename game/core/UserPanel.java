@@ -1,8 +1,10 @@
+package core;
 
-import java.awt.Color;
 import java.awt.Graphics;
+
 import javax.swing.*;
-import entities.Player;
+import gamestates.*;
+
 
 
 public class UserPanel extends JPanel implements JavaArcade, Runnable {
@@ -30,25 +32,23 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     public final static int SCALED_TILE_SIZE = TILE_SIZE * SCALE;
     public final static int GAME_WIDTH = SCALED_TILE_SIZE * TILES_IN_WIDTH;
     public final static int GAME_HEIGHT = SCALED_TILE_SIZE * TILES_IN_HEIGHT;
-    
-    private Player player;
-    private LevelHandler levelHandler;
+
+    private Playing playing;
+    private Menu menu;
+
 
     public UserPanel(int width, int height) {
         setBounds(0, 0, width, height);
         this.width = width;
         this.height = height;
-        setBackground(new Color(61, 213, 223));
+        // setBackground(new Color(61, 213, 223));
         addKeyListener(new KeyInputs(this));
         initClasses();
     }
 
     private void initClasses() {
-        levelHandler = new LevelHandler(this);
-
-        player = new Player(200, 200, SCALED_TILE_SIZE, SCALED_TILE_SIZE);
-        player.setLevelData(levelHandler.getLevel().getLevelData());
-        
+        menu = new Menu(this);
+        playing = new Playing(this);
     }
 
 
@@ -110,20 +110,36 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     }
 
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);  
+        super.paintComponent(g); 
         render(g);
+        
     }
 
     public void updateGame() {
-        player.update();
-        levelHandler.update();
+        switch(Gamestate.state) {
+            case MENU:
+                menu.update();
+                break;
+            case PLAYING:
+                playing.update();
+                break;
+            default:
+                break;
+        }
     }
 
     public void render(Graphics g) {
-        levelHandler.draw(g);
-        player.render(g);
+        switch(Gamestate.state) {
+            case MENU:
+                menu.draw(g);
+                break;
+            case PLAYING:
+                playing.draw(g);
+                break;
+            default:
+                break;
+        }
     }
-
 
     @Override
     public void run() {
@@ -164,7 +180,12 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
         }
     }
 
-    public Player getPlayer() {
-        return player;
+    public Menu getMenu() {
+        return menu;
     }
+    public Playing getPlaying() {
+        return playing;
+    }
+
+    
 }

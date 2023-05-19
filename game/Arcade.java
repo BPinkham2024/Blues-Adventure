@@ -5,11 +5,13 @@ import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
 
+import core.*;
+
 public class Arcade extends JFrame {
     public Arcade() {
         super("AP Java Arcade");
 
-        JavaArcade game = new UserPanel(UserPanel.GAME_WIDTH, UserPanel.GAME_HEIGHT);
+        JavaArcade game = new UserPanel(UserPanel.SCALED_TILE_SIZE * UserPanel.TILES_IN_WIDTH, UserPanel.SCALED_TILE_SIZE * UserPanel.TILES_IN_HEIGHT);
 
         GameStats display = new GameStats(game); //passing in a JavaArcade, therefore I know I can call getHighScore(), getScore()
 
@@ -32,10 +34,11 @@ public class Arcade extends JFrame {
 
     public static void main(String[] args) {
         Arcade window = new Arcade();
-        window.setBounds(100, 100, 1920, 1080);
+        // window.setBounds(100, 100, UserPanel.GAME_WIDTH, UserPanel.GAME_HEIGHT + (UserPanel.SCALED_TILE_SIZE * 3));
+        window.setBounds(100, 100, 20 * 64, 12 * 64);
         window.setLocationRelativeTo(null);
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        window.setResizable(true);
+        window.setResizable(false);
         window.setVisible(true);
     }
 }

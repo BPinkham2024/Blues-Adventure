@@ -1,9 +1,12 @@
+package level;
 
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import core.UserPanel;
 import utils.LoadSave;
+
 
 public class LevelHandler {
     private UserPanel game;

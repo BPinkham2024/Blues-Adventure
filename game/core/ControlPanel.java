@@ -1,5 +1,4 @@
-
-
+package core;
 import java.awt.event.*;
 import javax.swing.*;
 

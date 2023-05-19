@@ -45,7 +45,7 @@ public class Player extends Entity {
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
         loadAnimations();
-        initHitbox(x, y, (spriteSize - 6)* scale, (spriteSize - 3) * scale);
+        initHitbox(x, y, (spriteSize - 6)* scale, (spriteSize - 2) * scale);
 
     }
 
