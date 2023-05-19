@@ -1,5 +1,7 @@
 package utils;
 
+import java.awt.geom.Rectangle2D;
+
 public class Helpers {
     
     public static boolean CanMove(float x, float y, float width, float height, int[][] levelData) {
@@ -45,6 +47,39 @@ public class Helpers {
         }
         
         return false;
+    }
+
+    public static float GetPlayerXPosOnWall(Rectangle2D.Float hitBox, float xSpeed) {
+        int currentTile = (int) hitBox.x / 64;
+
+        if(xSpeed > 0) {
+            int tileX = currentTile * 64;
+            int xOffset = (int) (64 - hitBox.width);
+            return tileX + xOffset - 1;
+        } else {
+            return currentTile * 64;
+        }
+    }
+
+    public static float GetPlayerYPos(Rectangle2D.Float hitBox, float airSpeed) {
+        int currentTile = (int) hitBox.y / 64;
+
+        if(airSpeed > 0) {
+            int tileY = currentTile * 64;
+            int yOffset = (int) (64 - hitBox.height);
+            return tileY + yOffset - 1;
+        } else {
+            return currentTile * 64;
+        }
+    }
+
+    public static boolean IsOnFloor(Rectangle2D.Float hitBox, int[][] levelData) {
+        if(!TileSolid(hitBox.x, hitBox.y + hitBox.height + 1, levelData)) {
+            if(!TileSolid(hitBox.x + hitBox.width, hitBox.y + hitBox.height + 1, levelData)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

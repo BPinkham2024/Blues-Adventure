@@ -30,6 +30,8 @@ public class KeyInputs implements KeyListener {
             case KeyEvent.VK_D:
                 panel.getPlayer().setMovingRight(true);
                 break;
+            case KeyEvent.VK_SPACE:
+                panel.getPlayer().setJump(true);
         }
     }
 
@@ -48,6 +50,8 @@ public class KeyInputs implements KeyListener {
             case KeyEvent.VK_D:
                 panel.getPlayer().setMovingRight(false);
                 break;
+            case KeyEvent.VK_SPACE:
+                panel.getPlayer().setJump(false);
         }
     }
     
