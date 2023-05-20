@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import javax.swing.*;
 import gamestates.*;
+import ui.PauseOverlay;
 
 
 
@@ -66,7 +67,8 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
             gameStarted = true;
         }
         Gamestate.state = Gamestate.PLAYING;
-        
+        System.out.println("playing");
+        PauseOverlay.GAME_PAUSED = false;        
     }
 
     public String getGameName() {
@@ -74,8 +76,15 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     }
 
     public void pauseGame() {
+        System.out.println("paused");
+        PauseOverlay.GAME_PAUSED = true;
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+        }
         gameRunning = false;
         gamePaused = true;
+        
     }
 
     public String getInstructions() {

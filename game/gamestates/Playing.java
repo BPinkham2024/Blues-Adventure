@@ -6,11 +6,13 @@ import java.awt.event.KeyEvent;
 import core.UserPanel;
 import entities.Player;
 import level.LevelHandler;
+import ui.PauseOverlay;
 
 public class Playing extends State implements StateMethods {
 
     private Player player;
     private LevelHandler levelHandler;
+    private PauseOverlay pOverlay;
 
     public Playing(UserPanel game) {
         super(game);
@@ -22,6 +24,8 @@ public class Playing extends State implements StateMethods {
 
         player = new Player(200, 200, UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE);
         player.setLevelData(levelHandler.getLevel().getLevelData());
+
+        pOverlay = new PauseOverlay();
         
     }
 
@@ -35,6 +39,7 @@ public class Playing extends State implements StateMethods {
     public void draw(Graphics g) {
         levelHandler.draw(g);
         player.render(g);
+        pOverlay.draw(g);
     }
 
     @Override
