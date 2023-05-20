@@ -13,7 +13,9 @@ public class LoadSave {
     public static final String TERRAIN_MAP = "res/terrain_map.png";
     public static final String LEVEL_ONE_DATA = "res/level_one_data.png";
     public static final String FULL_BACK_DATA = "res/full_back.png";
+
     public static final String BACKGROUND_IMG = "res/sunset_background.png";
+    public static final String TITLE = "res/title.png";
 
 
     public static BufferedImage GetMap(String fileName) {

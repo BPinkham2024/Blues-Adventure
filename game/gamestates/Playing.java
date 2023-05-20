@@ -55,6 +55,10 @@ public class Playing extends State implements StateMethods {
             case KeyEvent.VK_SPACE:
                 player.setJump(true);
         }
+
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            Gamestate.state = Gamestate.MENU;
+        }
     }
 
     @Override

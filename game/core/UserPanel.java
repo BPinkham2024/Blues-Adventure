@@ -14,6 +14,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     private int highScore;
     private int points;
 
+    private boolean gameStarted;
     private boolean gameRunning;
     private boolean gamePaused;
     private boolean gameStopped;
@@ -60,7 +61,12 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
         gameRunning = true;
         gamePaused = false;
         gameStopped = false;
-        startGameLoop();
+        if(!gameStarted) {
+            startGameLoop();
+            gameStarted = true;
+        }
+        Gamestate.state = Gamestate.PLAYING;
+        
     }
 
     public String getGameName() {
@@ -144,6 +150,8 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     @Override
     public void run() {
 
+        
+
         double frameTime = 1000000000.0 / FPS;
         double timeUpdate = 1000000000.0 / UPS;
         long prevTime = System.nanoTime();
@@ -153,30 +161,35 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
         double deltaFrames = 0;
 
         while(true) {
+
             long currentTime = System.nanoTime();
+            if(!gamePaused && !gameStopped) {
+                
 
-            deltaUpdates += (currentTime - prevTime) / timeUpdate;
-            deltaFrames += (currentTime - prevTime) / frameTime;
+                deltaUpdates += (currentTime - prevTime) / timeUpdate;
+                deltaFrames += (currentTime - prevTime) / frameTime;
+                
+
+                if(deltaUpdates >= 1) {
+                    updateGame();
+                    updates++;
+                    deltaUpdates--;
+                }
+
+                if(deltaFrames >= 1) {
+                    repaint();
+                    frames++;
+                    deltaFrames--;
+
+                }
+                if(System.currentTimeMillis() - lastTime >= 1000) {
+                    lastTime = System.currentTimeMillis();
+                    System.out.println("FPS: " + frames + "| UPS: " + updates);
+                    frames = 0;
+                    updates = 0;
+                }
+            }
             prevTime = currentTime;
-
-            if(deltaUpdates >= 1) {
-                updateGame();
-                updates++;
-                deltaUpdates--;
-            }
-
-            if(deltaFrames >= 1) {
-                repaint();
-                frames++;
-                deltaFrames--;
-
-            }
-            if(System.currentTimeMillis() - lastTime >= 1000) {
-                lastTime = System.currentTimeMillis();
-                System.out.println("FPS: " + frames + "| UPS: " + updates);
-                frames = 0;
-                updates = 0;
-            }
         }
     }
 
