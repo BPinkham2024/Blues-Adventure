@@ -7,11 +7,14 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import core.UserPanel;
+
 public class LoadSave {
 
     public static final String SPRITE_MAP = "res/game_sprites.png";
     public static final String TERRAIN_MAP = "res/terrain_map.png";
-    public static final String LEVEL_ONE_DATA = "res/level_one_data.png";
+    // public static final String LEVEL_ONE_DATA = "res/level_one_data.png";
+    public static final String LEVEL_ONE_DATA = "res/level_one_data_long.png";
     public static final String FULL_BACK_DATA = "res/full_back.png";
 
     public static final String BACKGROUND_IMG = "res/sunset_background.png";
@@ -35,8 +38,9 @@ public class LoadSave {
     }
 
     public static int[][] LevelData() {
-        int[][] levelData = new int[10][20];
+    
         BufferedImage img = GetMap(LEVEL_ONE_DATA);
+        int[][] levelData = new int[img.getHeight()][img.getWidth()];
         // System.out.println(img.getWidth() + " " + img.getHeight());
 
         for(int i = 0; i < img.getHeight(); i++) {

@@ -2,6 +2,8 @@ package utils;
 
 import java.awt.geom.Rectangle2D;
 
+import core.UserPanel;
+
 public class Helpers {
     
     public static boolean CanMove(float x, float y, float width, float height, int[][] levelData) {
@@ -26,15 +28,17 @@ public class Helpers {
     }
 
     public static boolean TileSolid(float x, float y, int[][] levelData) {
-        if(x < 0 || x >= 64 * 20) {
+        int maxWidth = levelData[0].length * UserPanel.SCALED_TILE_SIZE;
+
+        if(x < 0 || x >= maxWidth) {
             return true;
         }
-        if(y < 0 || y >= 64 * 10) {
+        if(y < 0 || y >= UserPanel.GAME_HEIGHT) {
             return true;
         }
 
-        float xInd = x / 64;
-        float yInd = y / 64;
+        float xInd = x / UserPanel.SCALED_TILE_SIZE;
+        float yInd = y / UserPanel.SCALED_TILE_SIZE;
 
         // System.out.println(xInd + ", " + yInd);
 

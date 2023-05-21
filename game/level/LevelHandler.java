@@ -36,16 +36,16 @@ public class LevelHandler {
         }
     }
 
-    public void draw(Graphics g) {
+    public void draw(Graphics g, int xOffset) {
         // int count = 0;
         // for(BufferedImage img : levelMap) {
         //     g.drawImage(img, count * tileSize * scale, (count % 8) * tileSize * scale, tileSize * scale, tileSize * scale, null);
         //     count++;
         // }
-        for(int i = 0; i < 20; i++) {
-            for(int j = 0; j < 10; j++) {
+        for(int i = 0; i < level1.getLevelData()[0].length; i++) {
+            for(int j = 0; j < UserPanel.TILES_IN_HEIGHT; j++) {
                 int index = level1.getIndex(i, j);
-                g.drawImage(levelMap[index], i * UserPanel.SCALED_TILE_SIZE, j * UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE, null);
+                g.drawImage(levelMap[index], i * UserPanel.SCALED_TILE_SIZE - xOffset, j * UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE, null);
             }
         }
         // g.drawImage(levelMap[6], 0, 0, 64, 64, null);

@@ -30,10 +30,10 @@ public abstract class Entity {
     //     hitBox.y = (int) y;
     // }
 
-    protected void drawHitbox(Graphics g) {
-        g.setColor(Color.PINK);
-        g.drawRect((int) hitBox.x, (int) hitBox.y, (int) hitBox.width, (int) hitBox.height);
-    }
+    // protected void drawHitbox(Graphics g) {
+    //     g.setColor(Color.PINK);
+    //     g.drawRect((int) hitBox.x, (int) hitBox.y, (int) hitBox.width, (int) hitBox.height);
+    // }
 
     public Rectangle2D.Float getHitbox() {
         return hitBox;
