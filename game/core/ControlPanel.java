@@ -49,6 +49,7 @@ public class ControlPanel extends JPanel implements ActionListener {
                 ((JPanel)(game)).requestFocus(); //need to provide the JPanel focus
                 startButton.setText("Start");
                 game.startGame();
+                stopButton.setEnabled(true);
                 gStats.update(0);
                 gStats.repaint();       
             }
@@ -57,6 +58,7 @@ public class ControlPanel extends JPanel implements ActionListener {
             game.pauseGame();
             startButton.setText("Resume");
             startButton.setEnabled(true);
+            stopButton.setEnabled(false);
             repaint();
         }
         else if(button == stopButton) {
