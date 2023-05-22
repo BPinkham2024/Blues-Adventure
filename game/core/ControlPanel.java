@@ -53,7 +53,7 @@ public class ControlPanel extends JPanel implements ActionListener {
                 gStats.repaint();       
             }
         }
-        else if(button == pauseButton) {
+        else if(button == pauseButton && !((UserPanel) game).isGameStopped()) {
             game.pauseGame();
             startButton.setText("Resume");
             startButton.setEnabled(true);
@@ -63,8 +63,8 @@ public class ControlPanel extends JPanel implements ActionListener {
             game.stopGame();
             gStats.gameOver(game.getPoints());
             gStats.repaint();
-            startButton.setEnabled(true);
-            startButton.setText("Restart");
+            startButton.setEnabled(false);
+            pauseButton.setEnabled(false);
             repaint();
         }  
         else if(button == creditsButton) {

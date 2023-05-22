@@ -9,9 +9,7 @@ import ui.PauseOverlay;
 
 
 public class UserPanel extends JPanel implements JavaArcade, Runnable {
-
-    private int width;
-    private int height;
+    
     private int highScore;
     private int points;
 
@@ -42,8 +40,6 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
 
     public UserPanel(int width, int height) {
         setBounds(0, 0, width, height);
-        this.width = width;
-        this.height = height;
         // setBackground(new Color(61, 213, 223));
         addKeyListener(new KeyInputs(this));
         initClasses();
@@ -61,16 +57,18 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     }
 
     public void startGame() {
-        gameRunning = true;
-        gamePaused = false;
-        gameStopped = false;
-        if(!gameStarted) {
-            startGameLoop();
-            gameStarted = true;
+        if(!gameStopped) {
+            gameRunning = true;
+            gamePaused = false;
+            if(!gameStarted) {
+                startGameLoop();
+                gameStarted = true;
+            }
+            Gamestate.state = Gamestate.PLAYING;
+            // System.out.println("playing");
+            PauseOverlay.GAME_PAUSED = false;  
         }
-        Gamestate.state = Gamestate.PLAYING;
-        // System.out.println("playing");
-        PauseOverlay.GAME_PAUSED = false;        
+
     }
 
     public String getGameName() {
@@ -108,7 +106,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
             Thread.sleep(10);
         } catch (InterruptedException e) {
         }
-        
+
         gameRunning = false;
         gamePaused = false;
         gameStopped = true;
@@ -222,5 +220,19 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
         return playing;
     }
 
+    public boolean isGamePaused() {
+        return gamePaused;
+    }
+    public boolean isGameStarted() {
+        return gameStarted;
+    }
+
+    public boolean isGameRunning() {
+        return gameRunning;
+    }
+
+    public boolean isGameStopped() {
+        return gameStopped;
+    }
     
 }

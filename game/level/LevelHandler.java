@@ -9,15 +9,12 @@ import utils.LoadSave;
 
 
 public class LevelHandler {
-    private UserPanel game;
     private BufferedImage[] levelMap;
     private Level level1;
 
-    private int scale = UserPanel.SCALE;
     private int tileSize = UserPanel.TILE_SIZE;
     
-    public LevelHandler(UserPanel game) {
-        this.game = game;
+    public LevelHandler() {
         importLevelMap();
         level1 = new Level(LoadSave.LevelData());
     }

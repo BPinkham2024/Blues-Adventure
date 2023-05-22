@@ -32,7 +32,7 @@ public class Playing extends State implements StateMethods {
     }
 
     private void initClasses() {
-        levelHandler = new LevelHandler(game);
+        levelHandler = new LevelHandler();
 
         player = new Player(200, 200, UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE);
         player.setLevelData(levelHandler.getLevel().getLevelData());
