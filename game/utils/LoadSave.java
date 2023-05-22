@@ -7,8 +7,6 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-import core.UserPanel;
-
 public class LoadSave {
 
     public static final String SPRITE_MAP = "res/game_sprites.png";
@@ -17,6 +15,7 @@ public class LoadSave {
     public static final String LEVEL_ONE_DATA = "res/level_one_data_long.png";
     public static final String FULL_BACK_DATA = "res/full_back.png";
 
+    public static final String GAME_OVER_IMG = "res/game_over_screen.png";
     public static final String BACKGROUND_IMG = "res/sunset_background.png";
     public static final String PAUSED_OVERLAY = "res/paused_screen.png";
     public static final String SHADOW_BACK = "res/shadow_back.png";

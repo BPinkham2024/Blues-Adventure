@@ -35,7 +35,6 @@ public class PauseOverlay {
 
     public void draw(Graphics g) {
         if(GAME_PAUSED) {
-            System.out.println(GAME_PAUSED);
             g.drawImage(backing, 0, 0, null);
             g.drawImage(overlay, ovX, ovY,ovWidth, ovHeight, null);
         }

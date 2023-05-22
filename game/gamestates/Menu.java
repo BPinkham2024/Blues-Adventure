@@ -3,9 +3,6 @@ package gamestates;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
-import javax.swing.Timer;
-import javax.swing.text.Position;
-
 import java.awt.*;
 
 import core.UserPanel;
@@ -38,14 +35,9 @@ public class Menu extends State implements StateMethods {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-            Gamestate.state = Gamestate.PLAYING;
-        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
-    
 }

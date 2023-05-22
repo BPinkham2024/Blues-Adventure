@@ -37,6 +37,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
 
     private Playing playing;
     private Menu menu;
+    private GameOver gameOver;
 
 
     public UserPanel(int width, int height) {
@@ -51,6 +52,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     private void initClasses() {
         menu = new Menu(this);
         playing = new Playing(this);
+        gameOver = new GameOver(this);
     }
 
 
@@ -67,7 +69,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
             gameStarted = true;
         }
         Gamestate.state = Gamestate.PLAYING;
-        System.out.println("playing");
+        // System.out.println("playing");
         PauseOverlay.GAME_PAUSED = false;        
     }
 
@@ -76,7 +78,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     }
 
     public void pauseGame() {
-        System.out.println("paused");
+        // System.out.println("paused");
         PauseOverlay.GAME_PAUSED = true;
         try {
             Thread.sleep(10);
@@ -100,11 +102,16 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     }
 
     public void stopGame() {
+        highScore = Math.max(highScore, points);
+        Gamestate.state = Gamestate.GAME_OVER;
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+        }
+        
         gameRunning = false;
         gamePaused = false;
         gameStopped = true;
-
-        highScore = Math.max(highScore, points);
     }
 
     public int getPoints() {
@@ -138,6 +145,9 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
             case PLAYING:
                 playing.update();
                 break;
+            case GAME_OVER:
+                gameOver.update();
+                break;
             default:
                 break;
         }
@@ -150,6 +160,9 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
                 break;
             case PLAYING:
                 playing.draw(g);
+                break;
+            case GAME_OVER:
+                gameOver.draw(g);
                 break;
             default:
                 break;
