@@ -11,8 +11,11 @@ public class LoadSave {
 
     public static final String SPRITE_MAP = "res/game_sprites.png";
     public static final String TERRAIN_MAP = "res/terrain_map.png";
+    public static final String COIN_MAP = "res/coin.png";
     // public static final String LEVEL_ONE_DATA = "res/level_one_data.png";
-    public static final String LEVEL_ONE_DATA = "res/level_one_data_long.png";
+    // public static final String LEVEL_ONE_DATA = "res/level_one_data_long.png";
+    public static final String LEVEL_ONE_DATA = "res/level_one_with_coin.png";
+
     public static final String FULL_BACK_DATA = "res/full_back.png";
 
     public static final String GAME_OVER_IMG = "res/game_over_screen.png";
@@ -46,7 +49,7 @@ public class LoadSave {
             for(int j = 0; j < img.getWidth(); j++) {
                 Color color = new Color(img.getRGB(j, i));
                 int red = color.getRed() - 1;
-                if(red <= 24) {
+                if(red <= 25) {
                     levelData[i][j] = red;
                 } else if(red <= -1) {
                     levelData[i][j] = 6;
