@@ -3,6 +3,7 @@ package entities;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import gamestates.Playing;
 import utils.LoadSave;
 
 import static utils.Constants.PlayerConstants.*;
@@ -40,10 +41,13 @@ public class Player extends Entity {
     private float XBoxOffset = 3 * scale;
     private float YBoxOffset = 1 * scale;
 
+    private Playing playing;
+
 
     
-    public Player(float x, float y, int width, int height) {
+    public Player(float x, float y, int width, int height, Playing playing) {
         super(x, y, width, height);
+        this.playing = playing;
         loadAnimations();
         initHitbox(x, y, (spriteSize - 6)* scale, (spriteSize - 2) * scale);
 
@@ -53,6 +57,14 @@ public class Player extends Entity {
         updateAnimationTick();
         setAnimation();
         updatePos();
+
+        if(isMoving) {
+            checkCoinTouched();
+        }
+    }
+
+    private void checkCoinTouched() {
+        playing.checkCoinTouched(hitBox);
     }
 
     public void render(Graphics g, int xOffset) {

@@ -11,12 +11,18 @@ import utils.LoadSave;
 public class LevelHandler {
     private BufferedImage[] levelMap;
     private Level level1;
+    private UserPanel game;
 
     private int tileSize = UserPanel.TILE_SIZE;
     
-    public LevelHandler() {
+    public LevelHandler(UserPanel game) {
+        this.game = game;
         importLevelMap();
         level1 = new Level(LoadSave.LevelData());
+    }
+
+    public void loadLevel() {
+        game.getPlaying().getObjectHandler().loadObjects(level1);
     }
 
     private void importLevelMap() {
@@ -42,7 +48,9 @@ public class LevelHandler {
         for(int i = 0; i < level1.getLevelData()[0].length; i++) {
             for(int j = 0; j < UserPanel.TILES_IN_HEIGHT; j++) {
                 int index = level1.getIndex(i, j);
-                g.drawImage(levelMap[index], i * UserPanel.SCALED_TILE_SIZE - xOffset, j * UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE, null);
+                if(index >= 0) {
+                    g.drawImage(levelMap[index], i * UserPanel.SCALED_TILE_SIZE - xOffset, j * UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE, null);
+                }
             }
         }
         // g.drawImage(levelMap[6], 0, 0, 64, 64, null);

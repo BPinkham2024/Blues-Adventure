@@ -2,11 +2,14 @@ package gamestates;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.Rectangle2D.Float;
 import java.awt.image.BufferedImage;
 
 import core.UserPanel;
 import entities.Player;
 import level.LevelHandler;
+import objects.ObjectHandler;
 import ui.PauseOverlay;
 import utils.LoadSave;
 
@@ -16,6 +19,7 @@ public class Playing extends State implements StateMethods {
     private LevelHandler levelHandler;
     private PauseOverlay pOverlay;
     private BufferedImage bgImage;
+    private ObjectHandler oHandler;
 
     private int xOffset;
     private int movingBorderL = (int) (0.2 * UserPanel.GAME_WIDTH);
@@ -29,12 +33,23 @@ public class Playing extends State implements StateMethods {
         initClasses();
 
         bgImage = LoadSave.GetMap(LoadSave.BACKGROUND_IMG);
+
+        loadStartLevel();
+    }
+
+    public void addToScore(int value) {
+        game.addPoints(value);
+    }
+
+    private void loadStartLevel() {
+        oHandler.loadObjects(levelHandler.getLevel());
     }
 
     private void initClasses() {
-        levelHandler = new LevelHandler();
+        levelHandler = new LevelHandler(game);
+        oHandler = new ObjectHandler(this);
 
-        player = new Player(200, 200, UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE);
+        player = new Player(200, 200, UserPanel.SCALED_TILE_SIZE, UserPanel.SCALED_TILE_SIZE, this);
         player.setLevelData(levelHandler.getLevel().getLevelData());
 
         pOverlay = new PauseOverlay();
@@ -44,8 +59,14 @@ public class Playing extends State implements StateMethods {
     @Override
     public void update() {
         levelHandler.update();
+        oHandler.update();
         player.update();
         checkBorder();
+    }
+
+
+    public void checkCoinTouched(Rectangle2D.Float hitBox) {
+        oHandler.checkObjectTouched(hitBox);
     }
 
     private void checkBorder() {
@@ -73,6 +94,7 @@ public class Playing extends State implements StateMethods {
         g.drawImage(bgImage, 0, 0, UserPanel.GAME_WIDTH, UserPanel.GAME_HEIGHT,null);
 
         levelHandler.draw(g, xOffset);
+        oHandler.draw(g, xOffset);
         player.render(g, xOffset);
         pOverlay.draw(g);
     }
@@ -120,5 +142,10 @@ public class Playing extends State implements StateMethods {
     public Player getPlayer() {
         return player;
     }
+
+    public ObjectHandler getObjectHandler() {
+        return oHandler;
+    }
+
     
 }

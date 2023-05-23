@@ -1,5 +1,7 @@
 package utils;
 
+import core.UserPanel;
+
 public class Constants {
 
     public static class Directions {
@@ -7,6 +9,23 @@ public class Constants {
         public static final int UP = 1;
         public static final int RIGHT = 2;
         public static final int DOWN = 3;
+    }
+
+    public static class ObjectConstants {
+        public static final int COIN_VALUE = 1;
+
+        public static final int COIN_HEIGHT = (int) UserPanel.TILE_SIZE * UserPanel.SCALE;
+        public static final int COIN_WIDTH = (int) UserPanel.TILE_SIZE * UserPanel.SCALE;
+
+        public static final int GetSpriteAmount(int object_type) {
+            switch(object_type) {
+                case COIN_VALUE:
+                    return 5;
+                
+            }
+
+            return 1;
+        }
     }
 
     public static class PlayerConstants {

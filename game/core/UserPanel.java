@@ -37,12 +37,15 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     private Menu menu;
     private GameOver gameOver;
 
+    private GameStats gameStats;
+
 
     public UserPanel(int width, int height) {
         setBounds(0, 0, width, height);
         // setBackground(new Color(61, 213, 223));
         addKeyListener(new KeyInputs(this));
         initClasses();
+        gameStats = new GameStats(this);
     }
 
     private void initClasses() {
@@ -110,6 +113,13 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
         gameRunning = false;
         gamePaused = false;
         gameStopped = true;
+    }
+
+    public void addPoints(int points) {
+        this.points += points;
+        // System.out.println(points);
+        gameStats.setYourScore(this.points);
+
     }
 
     public int getPoints() {

@@ -1,8 +1,14 @@
 package utils;
 
+import java.awt.Color;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import core.UserPanel;
+import objects.Coin;
+
+import static utils.Constants.ObjectConstants.*;
 
 public class Helpers {
     
@@ -46,6 +52,9 @@ public class Helpers {
         // System.out.println(val);
         // int val = 6;
 
+        if(val == -1) {
+            return false;
+        }
         if(val >= 24 || val < 0 || val != 6) {
             return true;
         }
@@ -84,6 +93,23 @@ public class Helpers {
             }
         }
         return true;
+    }
+
+    public static ArrayList<Coin> GetCoins(BufferedImage img) {
+        ArrayList<Coin> list = new ArrayList<Coin>();
+        // System.out.println(img.getWidth());
+        for(int i = 0; i < img.getHeight(); i++) {
+            for(int j = 0; j < img.getWidth(); j++) {
+                // System.out.println("x: " + j + " y: " + i);
+                Color blue = new Color(img.getRGB(j, i));
+                int val = blue.getBlue();
+                if(val == COIN_VALUE) {
+                    list.add(new Coin(j* UserPanel.SCALED_TILE_SIZE, i * UserPanel.SCALED_TILE_SIZE, COIN_VALUE));
+                }
+            }
+        }
+
+        return list;
     }
 
 }

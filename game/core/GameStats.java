@@ -25,14 +25,20 @@ public class GameStats extends JPanel {
         add(hScore); //new JLabel(" Current High Score:   " + t.getHighScore()));
 
         add(new JLabel(" "));
-        yourScoreText = new JLabel(" Your Final Score: " + 0);
+        yourScoreText = new JLabel(" Your Final Score: " + yourScore);
 
         add(yourScoreText);
         Font displayFont = new Font("Monospaced", Font.BOLD, 16);
         game = t;
+
         
     }
 
+    public void setYourScore(int yourScore) {
+        this.yourScore = yourScore;
+        // System.out.println(yourScore);
+        update(this.yourScore);
+    }
 
     public void update(int points){
         yourScoreText.setText(" Your Score: " + points);
