@@ -75,7 +75,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     }
 
     public String getGameName() {
-        return "";
+        return "Blue's Adventure";
     }
 
     public void pauseGame() {
@@ -102,8 +102,12 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
         return "" + highScore;
     }
 
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
+    }
+
     public void stopGame() {
-        highScore = Math.max(highScore, points);
+        // highScore = Math.max(highScore, points);
         Gamestate.state = Gamestate.GAME_OVER;
         try {
             Thread.sleep(10);
@@ -123,7 +127,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     }
 
     public int getPoints() {
-        return points;
+        return gameStats.getYourScore();
     }
 
     public void setDisplay(GameStats d) {
@@ -152,6 +156,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
                 break;
             case PLAYING:
                 playing.update();
+                gameStats.update(points);
                 break;
             case GAME_OVER:
                 gameOver.update();
@@ -243,6 +248,10 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
 
     public boolean isGameStopped() {
         return gameStopped;
+    }
+
+    public GameStats getGameStats() {
+        return gameStats;
     }
     
 }

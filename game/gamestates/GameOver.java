@@ -1,7 +1,5 @@
 package gamestates;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
@@ -23,6 +21,7 @@ public class GameOver extends State implements StateMethods {
         // g.setColor(new Color(64,179,215));
         // g.fillRect(0, 0, UserPanel.GAME_WIDTH, UserPanel.GAME_HEIGHT);
         g.drawImage(LoadSave.GetMap(LoadSave.GAME_OVER_IMG), 0, 0, null);
+        // game.getGameStats().gameOver(game.getPoints());
         // g.setFont(new Font("Norwester", 0, 20));
         // g.setColor(Color.WHITE);
         // g.drawString("Press the Start Button", 560, 580);

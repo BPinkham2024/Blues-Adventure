@@ -9,7 +9,7 @@ import core.*;
 
 public class Arcade extends JFrame {
     public Arcade() {
-        super("AP Java Arcade");
+        super("Blue's Adventure");
 
         JavaArcade game = new UserPanel(UserPanel.SCALED_TILE_SIZE * UserPanel.TILES_IN_WIDTH, UserPanel.SCALED_TILE_SIZE * UserPanel.TILES_IN_HEIGHT);
 
