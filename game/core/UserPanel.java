@@ -40,12 +40,13 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     private GameStats gameStats;
 
 
+
     public UserPanel(int width, int height) {
         setBounds(0, 0, width, height);
         // setBackground(new Color(61, 213, 223));
         addKeyListener(new KeyInputs(this));
         initClasses();
-        gameStats = new GameStats(this);
+        // gameStats = new GameStats(this);
     }
 
     private void initClasses() {
@@ -123,7 +124,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
         this.points += points;
         // System.out.println(points);
         gameStats.setYourScore(this.points);
-
+        gameStats.repaint();
     }
 
     public int getPoints() {
@@ -156,7 +157,8 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
                 break;
             case PLAYING:
                 playing.update();
-                gameStats.update(points);
+                gameStats.update(gameStats.getYourScore());
+                // System.out.println("Score: " + points);
                 break;
             case GAME_OVER:
                 gameOver.update();
@@ -226,6 +228,10 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
             }
             prevTime = currentTime;
         }
+    }
+
+    public void setGameStats(GameStats gameStats) {
+        this.gameStats = gameStats;
     }
 
     public Menu getMenu() {
