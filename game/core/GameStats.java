@@ -42,9 +42,9 @@ public class GameStats extends JPanel {
 
     public void setYourScore(int yourScore) {
         this.yourScore = yourScore;
-        yourScoreText.setText(" Your Score: " + this.yourScore);
-        // System.out.println("here");
         update(this.yourScore);
+        // System.out.println("here");
+        // update(this.yourScore);
     }
 
     public int getYourScore() {
@@ -54,7 +54,7 @@ public class GameStats extends JPanel {
     public void update(int points){
         yourScoreText.setText(" Your Score: " + points);
         // yourScoreText.repaint();
-        System.out.println("here" + points);
+        // System.out.println("here" + points);
         // repaint();
     }
 
@@ -63,6 +63,7 @@ public class GameStats extends JPanel {
             game.setHighScore(points);
             yourScoreText.setForeground(Color.BLUE);
             JOptionPane.showInputDialog(this, "You are the new high scorer. Congratulations!\n Enter your name: ", "High Score", JOptionPane.PLAIN_MESSAGE, null, null,"name");
+            yourScoreText.setText(" Your Score: " + points);
             hScore.setText(" Current High Score:   " + points);
         }
         
