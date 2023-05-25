@@ -157,6 +157,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
                 break;
             case PLAYING:
                 playing.update();
+                playing.checkBelowBorder();
                 gameStats.update(gameStats.getYourScore());
                 // System.out.println("Score: " + points);
                 break;

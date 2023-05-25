@@ -159,8 +159,6 @@ public class Player extends Entity {
                     resetInAir();
                 } else {
                     airSpeed = collisionFallSpeed;
-
-                    checkIsDead();
                 }
 
                 updateXPos(xSpeed);
@@ -173,9 +171,6 @@ public class Player extends Entity {
         isMoving = true;
     }
 
-    private void checkIsDead() {
-        
-    }
 
     private void updateXPos(float xSpeed) {
         if(CanMove(hitBox.x + xSpeed, hitBox.y, hitBox.width, hitBox.height, levelData)) {

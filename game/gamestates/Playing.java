@@ -23,6 +23,7 @@ public class Playing extends State implements StateMethods {
     private int xOffset;
     private int movingBorderL = (int) (0.2 * UserPanel.GAME_WIDTH);
     private int movingBorderR = (int) (0.8 * UserPanel.GAME_WIDTH);
+    private int deathBorder = (int) (.9 * UserPanel.GAME_HEIGHT);
     private int levelTilesWide = LoadSave.LevelData()[0].length;
     private int maxTileOffset = levelTilesWide - UserPanel.TILES_IN_WIDTH;
     private int maxOffset = maxTileOffset * UserPanel.SCALED_TILE_SIZE;
@@ -83,6 +84,13 @@ public class Playing extends State implements StateMethods {
             xOffset = maxOffset;
         } else if(xOffset < 0) {
             xOffset = 0;
+        }
+    }
+
+    public void checkBelowBorder() {
+        int playerY = (int) player.getHitbox().y;
+        if(playerY >= deathBorder) {
+            game.stopGame();
         }
     }
 

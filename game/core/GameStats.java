@@ -42,8 +42,6 @@ public class GameStats extends JPanel {
 
     public void setYourScore(int yourScore) {
         this.yourScore = yourScore;
-        // yourScoreText.setText(" Your Score: " + this.yourScore);
-        // System.out.println("here");
         update(this.yourScore);
     }
 
@@ -53,8 +51,6 @@ public class GameStats extends JPanel {
 
     public void update(int points){
         yourScoreText.setText(" Score: " + points);
-        // yourScoreText.paintImmediately(yourScoreText.getVisibleRect());
-        // System.out.println("score: " + points);
     }
 
     public void gameOver(int points) {
