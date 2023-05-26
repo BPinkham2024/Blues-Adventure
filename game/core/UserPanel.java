@@ -18,8 +18,8 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     private boolean gamePaused;
     private boolean gameStopped;
 
-    private long lastTime;
-    private int frames;
+    // private long lastTime;
+    // private int frames;
 
     private Thread thread;
     private final int FPS = 120;
@@ -187,7 +187,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
         double frameTime = 1000000000.0 / FPS;
         double timeUpdate = 1000000000.0 / UPS;
         long prevTime = System.nanoTime();
-        int updates = 0;
+        // int updates = 0;
 
         double deltaUpdates = 0;
         double deltaFrames = 0;
@@ -204,22 +204,22 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
 
                 if(deltaUpdates >= 1) {
                     updateGame();
-                    updates++;
+                    // updates++;
                     deltaUpdates--;
                 }
 
                 if(deltaFrames >= 1) {
                     repaint();
-                    frames++;
+                    // frames++;
                     deltaFrames--;
 
                 }
-                if(System.currentTimeMillis() - lastTime >= 1000) {
-                    lastTime = System.currentTimeMillis();
-                    System.out.println("FPS: " + frames + "| UPS: " + updates);
-                    frames = 0;
-                    updates = 0;
-                }
+                // if(System.currentTimeMillis() - lastTime >= 1000) {
+                //     lastTime = System.currentTimeMillis();
+                //     System.out.println("FPS: " + frames + "| UPS: " + updates);
+                //     frames = 0;
+                //     updates = 0;
+                // }
             }
             prevTime = currentTime;
         }
