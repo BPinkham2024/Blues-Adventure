@@ -31,7 +31,7 @@ public class Player extends Entity {
 
     private boolean inAir;
     private int playerAction = IDLE;
-    private boolean isMoving;
+    public static boolean IS_MOVING;
 
     private int aniTick;
     private int aniIndex;
@@ -58,7 +58,7 @@ public class Player extends Entity {
         setAnimation();
         updatePos();
 
-        if(isMoving) {
+        if(IS_MOVING) {
             checkCoinTouched();
         }
     }
@@ -75,7 +75,7 @@ public class Player extends Entity {
 
     private void setAnimation() {
         // movement directions messed up but just changing left and right vars seems to fix it
-        if(isMoving) {
+        if(IS_MOVING) {
             if(movingLeft) {
                 playerAction = MOVING_RIGHT;
                 if(inAir) {
@@ -116,7 +116,7 @@ public class Player extends Entity {
     }
 
     private void updatePos() {
-        isMoving = false;
+        IS_MOVING = false;
         if(jump) {
             jump();
         }
@@ -163,7 +163,7 @@ public class Player extends Entity {
             updateXPos(xSpeed);
         }
 
-        isMoving = true;
+        IS_MOVING = true;
     }
 
 

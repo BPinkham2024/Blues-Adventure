@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import core.UserPanel;
+import entities.Player;
 import utils.LoadSave;
 
 public class PauseOverlay {
@@ -37,6 +38,7 @@ public class PauseOverlay {
         if(GAME_PAUSED) {
             g.drawImage(backing, 0, 0, null);
             g.drawImage(overlay, ovX, ovY,ovWidth, ovHeight, null);
+            Player.IS_MOVING = false;
         }
     }
 }
