@@ -61,7 +61,6 @@ public class ControlPanel extends JPanel implements ActionListener {
                 pauseButton.setEnabled(true);
                 stopButton.setEnabled(true);
                 gStats.update(((UserPanel) game).getGameStats().getYourScore());
-                System.out.println(((UserPanel) game).getGameStats().getYourScore());
                 gStats.repaint();       
             }
         }
