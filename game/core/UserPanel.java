@@ -89,7 +89,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     }
 
     public String getInstructions() {
-        return "Keybinds:\n\tA: Left\n\tD: Right\n\tSpace: Jump";
+        return "Keybinds:\n\tA: Left\n\tD: Right\n\tSpace: Jump\nGoal:\n\tJump from platform to platform.\n\tCollect coins to gain points.";
     }
 
     public String getCredits() {
