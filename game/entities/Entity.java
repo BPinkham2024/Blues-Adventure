@@ -18,17 +18,12 @@ public abstract class Entity {
         this.width = width;
         this.height = height;
 
-        // hitBox = new Rectangle2D.Float(x, y, width, height);
     }
 
     protected void initHitbox(float x, float y, float width, float height) {
         hitBox = new Rectangle2D.Float(x, y, width, height);
     }
 
-    // protected void updateHitbox() {
-    //     hitBox.x = (int) x;
-    //     hitBox.y = (int) y;
-    // }
 
     // protected void drawHitbox(Graphics g) {
     //     g.setColor(Color.PINK);

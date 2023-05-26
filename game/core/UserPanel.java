@@ -43,13 +43,9 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
 
     public UserPanel(int width, int height, ControlPanel controlPanel) {
         setBounds(0, 0, width, height);
-        // setBackground(new Color(61, 213, 223));
         addKeyListener(new KeyInputs(this));
         this.controlPanel = controlPanel;
         initClasses();
-
-
-        // gameStats = new GameStats(this);
     }
 
     private void initClasses() {
@@ -72,7 +68,6 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
                 gameStarted = true;
             }
             Gamestate.state = Gamestate.PLAYING;
-            // System.out.println("playing");
             PauseOverlay.GAME_PAUSED = false;  
         }
 
@@ -83,7 +78,6 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     }
 
     public void pauseGame() {
-        // System.out.println("paused");
         PauseOverlay.GAME_PAUSED = true;
         try {
             Thread.sleep(10);
@@ -111,7 +105,6 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     }
 
     public void stopGame() {
-        // highScore = Math.max(highScore, points);
         Gamestate.state = Gamestate.GAME_OVER;
         try {
             Thread.sleep(50);
@@ -125,7 +118,6 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
 
     public void addPoints(int points) {
         this.points += points;
-        // System.out.println(points);
         gameStats.setYourScore(this.points);
         gameStats.repaint();
     }
@@ -162,7 +154,6 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
                 playing.update();
                 playing.checkBelowBorder();
                 gameStats.update(gameStats.getYourScore());
-                // System.out.println("Score: " + points);
                 break;
             case GAME_OVER:
                 gameOver.update();

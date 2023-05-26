@@ -28,9 +28,6 @@ public class Menu extends State implements StateMethods {
             g.setFont(new Font("Norwester", 0, 20));
             g.setColor(Color.WHITE);
             g.drawString("Press the Start Button", 560, 580);
-            
-        // g.fillRect(0, 0, 100, 300);
-        // g.drawString("MENU", UserPanel.GAME_WIDTH/2, 200);
     }
 
     @Override

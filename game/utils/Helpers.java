@@ -14,15 +14,10 @@ public class Helpers {
     
     public static boolean CanMove(float x, float y, float width, float height, int[][] levelData) {
 
-        // System.out.println(0);
         if(!TileSolid(x, y, levelData)) {
-            // System.out.println(1);
             if(!TileSolid(x + width, y + height, levelData)) {
-                // System.out.println(2);
                 if(!TileSolid(x + width, y, levelData)) {
-                    // System.out.println(3);
                     if(!TileSolid(x, y + height, levelData)) {
-                        // System.out.println(4);
                         return true;
                     }
                 }
@@ -46,11 +41,8 @@ public class Helpers {
         float xInd = x / UserPanel.SCALED_TILE_SIZE;
         float yInd = y / UserPanel.SCALED_TILE_SIZE;
 
-        // System.out.println(xInd + ", " + yInd);
 
         int val = levelData[(int) yInd][(int) xInd];
-        // System.out.println(val);
-        // int val = 6;
 
         if(val == -1) {
             return false;
@@ -97,10 +89,8 @@ public class Helpers {
 
     public static ArrayList<Coin> GetCoins(BufferedImage img) {
         ArrayList<Coin> list = new ArrayList<Coin>();
-        // System.out.println(img.getWidth());
         for(int i = 0; i < img.getHeight(); i++) {
             for(int j = 0; j < img.getWidth(); j++) {
-                // System.out.println("x: " + j + " y: " + i);
                 Color blue = new Color(img.getRGB(j, i));
                 int val = blue.getBlue();
                 if(val == COIN_VALUE) {

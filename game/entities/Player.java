@@ -92,7 +92,6 @@ public class Player extends Entity {
                 playerAction = JUMPING_R;
             }
             
-            // System.out.println(isMoving);
         } else {
             playerAction = IDLE;
         }
@@ -121,9 +120,6 @@ public class Player extends Entity {
         if(jump) {
             jump();
         }
-        // if(!movingLeft && !movingRight && !inAir) {
-        //     return;
-        // }
 
         if(!inAir) {
             if((!movingLeft && !movingRight) || (movingLeft && movingRight)) {
@@ -132,7 +128,6 @@ public class Player extends Entity {
         }
 
         float xSpeed = 0;
-        // float ySpeed = 0;
 
         if(movingLeft) {
             xSpeed -= playerSpeed;

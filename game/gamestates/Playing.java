@@ -48,7 +48,6 @@ public class Playing extends State implements StateMethods {
     }
 
     private void initClasses() {
-        // System.out.println(game.getControlPanel());
         controlPanel = game.getControlPanel();
         levelHandler = new LevelHandler(game);
         oHandler = new ObjectHandler(this);

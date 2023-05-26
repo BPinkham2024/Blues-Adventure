@@ -12,13 +12,11 @@ public class Arcade extends JFrame {
         super("Blue's Adventure");
 
 
-        ControlPanel controls = new ControlPanel(); //Also passing in JavaArcade to ControlPanel, I know you will respond to buttons
-        // System.out.println(controls);
+        ControlPanel controls = new ControlPanel();
 
         JavaArcade game = new UserPanel(UserPanel.SCALED_TILE_SIZE * UserPanel.TILES_IN_WIDTH, UserPanel.SCALED_TILE_SIZE * UserPanel.TILES_IN_HEIGHT, controls);
-        // ((UserPanel) game).setControlPanel(controls);
 
-        GameStats display = new GameStats(game); //passing in a JavaArcade, therefore I know I can call getHighScore(), getScore()
+        GameStats display = new GameStats(game);
         ((UserPanel) game).setGameStats(display);
 
         controls.setGame(game);
@@ -43,7 +41,6 @@ public class Arcade extends JFrame {
 
     public static void main(String[] args) {
         Arcade window = new Arcade();
-        // window.setBounds(100, 100, UserPanel.GAME_WIDTH, UserPanel.GAME_HEIGHT + (UserPanel.SCALED_TILE_SIZE * 3));
         window.setBounds(100, 100, 20 * 64, 12 * 64);
         window.setLocationRelativeTo(null);
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);

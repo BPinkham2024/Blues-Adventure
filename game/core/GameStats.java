@@ -34,7 +34,6 @@ public class GameStats extends JPanel {
 
 
         add(yourScoreText);
-        // Font displayFont = new Font("Norwester", Font.BOLD, 16);
         game = t;
 
         
