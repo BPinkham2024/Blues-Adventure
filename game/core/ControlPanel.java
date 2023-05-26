@@ -9,9 +9,7 @@ public class ControlPanel extends JPanel implements ActionListener {
     private JButton startButton, pauseButton, stopButton, instructionsButton, creditsButton;
 
     // Constructor
-    public ControlPanel(JavaArcade t, GameStats g) {
-        game = t;
-        gStats = g;
+    public ControlPanel() {
 
         instructionsButton = new JButton("Instructions");
         instructionsButton.addActionListener(this);
@@ -34,6 +32,17 @@ public class ControlPanel extends JPanel implements ActionListener {
         add(creditsButton);
         
 
+    }
+
+    public void endGame() {
+        game.stopGame();
+        startButton.setEnabled(false);
+        pauseButton.setEnabled(false);
+        stopButton.setEnabled(false);
+        gStats.repaint();
+        gStats.gameOver(((UserPanel) game).getGameStats().getYourScore());
+        // System.out.println("game over");
+        repaint();
     }
 
     // Called when the start button is clicked
@@ -66,14 +75,7 @@ public class ControlPanel extends JPanel implements ActionListener {
             repaint();
         }
         else if(button == stopButton) {
-            game.stopGame();
-            startButton.setEnabled(false);
-            pauseButton.setEnabled(false);
-            stopButton.setEnabled(false);
-            gStats.repaint();
-            gStats.gameOver(((UserPanel) game).getGameStats().getYourScore());
-            // System.out.println("game over");
-            repaint();
+            endGame();
         }  
         else if(button == creditsButton) {
             String credits = game.getCredits();
@@ -86,5 +88,27 @@ public class ControlPanel extends JPanel implements ActionListener {
         }
         ((JPanel)(game)).requestFocus();      
     }
+
+    public JButton getStartButton() {
+        return startButton;
+    }
+
+    public JButton getPauseButton() {
+        return pauseButton;
+    }
+
+    public JButton getStopButton() {
+        return stopButton;
+    }
+
+    public void setGame(JavaArcade game) {
+        this.game = game;
+    }
+
+    public void setgStats(GameStats gStats) {
+        this.gStats = gStats;
+    }
+
+    
 }
 

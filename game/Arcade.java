@@ -11,13 +11,22 @@ public class Arcade extends JFrame {
     public Arcade() {
         super("Blue's Adventure");
 
-        JavaArcade game = new UserPanel(UserPanel.SCALED_TILE_SIZE * UserPanel.TILES_IN_WIDTH, UserPanel.SCALED_TILE_SIZE * UserPanel.TILES_IN_HEIGHT);
+
+        ControlPanel controls = new ControlPanel(); //Also passing in JavaArcade to ControlPanel, I know you will respond to buttons
+        // System.out.println(controls);
+
+        JavaArcade game = new UserPanel(UserPanel.SCALED_TILE_SIZE * UserPanel.TILES_IN_WIDTH, UserPanel.SCALED_TILE_SIZE * UserPanel.TILES_IN_HEIGHT, controls);
+        // ((UserPanel) game).setControlPanel(controls);
 
         GameStats display = new GameStats(game); //passing in a JavaArcade, therefore I know I can call getHighScore(), getScore()
         ((UserPanel) game).setGameStats(display);
+
+        controls.setGame(game);
+        controls.setgStats(display);
             
-        ControlPanel controls = new ControlPanel(game, display); //Also passing in JavaArcade to ControlPanel, I know you will respond to buttons
-        
+
+
+
         game.setDisplay(display); //provides game ability to update display
         
         JPanel panel = new JPanel();

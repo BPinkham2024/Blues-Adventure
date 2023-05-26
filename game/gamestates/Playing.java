@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
+import core.ControlPanel;
 import core.UserPanel;
 import entities.Player;
 import level.LevelHandler;
@@ -19,6 +20,7 @@ public class Playing extends State implements StateMethods {
     private PauseOverlay pOverlay;
     private BufferedImage bgImage;
     private ObjectHandler oHandler;
+    private ControlPanel controlPanel;
 
     private int xOffset;
     private int movingBorderL = (int) (0.2 * UserPanel.GAME_WIDTH);
@@ -46,6 +48,8 @@ public class Playing extends State implements StateMethods {
     }
 
     private void initClasses() {
+        // System.out.println(game.getControlPanel());
+        controlPanel = game.getControlPanel();
         levelHandler = new LevelHandler(game);
         oHandler = new ObjectHandler(this);
 
@@ -91,6 +95,14 @@ public class Playing extends State implements StateMethods {
         int playerY = (int) player.getHitbox().y;
         if(playerY >= deathBorder) {
             game.stopGame();
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+            }
+
+            controlPanel.endGame();
+
+
         }
     }
 

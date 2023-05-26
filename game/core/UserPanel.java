@@ -36,16 +36,19 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
     private Playing playing;
     private Menu menu;
     private GameOver gameOver;
-
+    private ControlPanel controlPanel;
     private GameStats gameStats;
 
 
 
-    public UserPanel(int width, int height) {
+    public UserPanel(int width, int height, ControlPanel controlPanel) {
         setBounds(0, 0, width, height);
         // setBackground(new Color(61, 213, 223));
         addKeyListener(new KeyInputs(this));
+        this.controlPanel = controlPanel;
         initClasses();
+
+
         // gameStats = new GameStats(this);
     }
 
@@ -111,7 +114,7 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
         // highScore = Math.max(highScore, points);
         Gamestate.state = Gamestate.GAME_OVER;
         try {
-            Thread.sleep(10);
+            Thread.sleep(50);
         } catch (InterruptedException e) {
         }
 
@@ -259,6 +262,14 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
 
     public GameStats getGameStats() {
         return gameStats;
+    }
+
+    public void setControlPanel(ControlPanel controlPanel) {
+        this.controlPanel = controlPanel;
+    }
+
+    public ControlPanel getControlPanel() {
+        return controlPanel;
     }
     
 }
