@@ -220,6 +220,8 @@ public class UserPanel extends JPanel implements JavaArcade, Runnable {
                 //     frames = 0;
                 //     updates = 0;
                 // }
+            } else if(gameStopped) {
+                Gamestate.state = Gamestate.GAME_OVER;
             }
             prevTime = currentTime;
         }
