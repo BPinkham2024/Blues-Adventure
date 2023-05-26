@@ -100,6 +100,10 @@ public class Playing extends State implements StateMethods {
             }
 
             controlPanel.endGame();
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+            }
 
 
         }
