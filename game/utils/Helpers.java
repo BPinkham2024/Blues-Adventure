@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import core.UserPanel;
 import objects.Coin;
+import objects.Gem;
 
 import static utils.Constants.ObjectConstants.*;
 
@@ -93,8 +94,23 @@ public class Helpers {
             for(int j = 0; j < img.getWidth(); j++) {
                 Color blue = new Color(img.getRGB(j, i));
                 int val = blue.getBlue();
-                if(val == COIN_VALUE) {
-                    list.add(new Coin(j* UserPanel.SCALED_TILE_SIZE, i * UserPanel.SCALED_TILE_SIZE, COIN_VALUE));
+                if(val == COIN_BLUE) {
+                    list.add(new Coin(j* UserPanel.SCALED_TILE_SIZE, i * UserPanel.SCALED_TILE_SIZE, COIN_BLUE));
+                }
+            }
+        }
+
+        return list;
+    }
+
+    public static ArrayList<Gem> GetGems(BufferedImage img) {
+        ArrayList<Gem> list = new ArrayList<Gem>();
+        for(int i = 0; i < img.getHeight(); i++) {
+            for(int j = 0; j < img.getWidth(); j++) {
+                Color blue = new Color(img.getRGB(j, i));
+                int val = blue.getBlue();
+                if(val == GEM_BLUE) {
+                    list.add(new Gem(j* UserPanel.SCALED_TILE_SIZE, i * UserPanel.SCALED_TILE_SIZE, GEM_BLUE));
                 }
             }
         }

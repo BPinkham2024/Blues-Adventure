@@ -12,6 +12,7 @@ public class LoadSave {
     public static final String SPRITE_MAP = "res/game_sprites.png";
     public static final String TERRAIN_MAP = "res/terrain_map.png";
     public static final String COIN_MAP = "res/coin.png";
+    public static final String GEM_MAP = "res/gem.png";
     // public static final String LEVEL_ONE_DATA = "res/level_one_data.png";
     // public static final String LEVEL_ONE_DATA = "res/level_one_data_long.png";
     // public static final String LEVEL_ONE_DATA = "res/level_one_with_coin.png";

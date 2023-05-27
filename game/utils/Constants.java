@@ -13,13 +13,21 @@ public class Constants {
 
     public static class ObjectConstants {
         public static final int COIN_VALUE = 1;
+        public static final int GEM_VALUE = 5;
+
+        public static final int COIN_BLUE = 1;
+        public static final int GEM_BLUE = 2;
 
         public static final int COIN_HEIGHT = (int) UserPanel.TILE_SIZE * UserPanel.SCALE;
         public static final int COIN_WIDTH = (int) UserPanel.TILE_SIZE * UserPanel.SCALE;
+        public static final int GEM_HEIGHT = (int) UserPanel.TILE_SIZE * UserPanel.SCALE;
+        public static final int GEM_WIDTH = (int) UserPanel.TILE_SIZE * UserPanel.SCALE;
 
         public static final int GetSpriteAmount(int object_type) {
             switch(object_type) {
-                case COIN_VALUE:
+                case COIN_BLUE:
+                    return 8;
+                case GEM_BLUE:
                     return 5;
                 
             }
